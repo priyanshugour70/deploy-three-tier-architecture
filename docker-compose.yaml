@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  productcatalogue:
+    image: priyanshugour70/pbl4-productcatalogue:latest
+    ports:
+      - "8020:8020"
+
+  stockmanager:
+    image: priyanshugour70/pbl4-stockmanager:latest
+    ports:
+      - "8030:8030"
+
+  shopfront:
+    image: priyanshugour70/pbl4-shopfront:latest
+    ports:
+      - "8010:8010"

@@ -10,17 +10,16 @@ spec:
   selector:
     app: stockmanager
   ports:
-  - protocol: TCP
-    port: 8030
-    name: http
+    - protocol: TCP
+      port: 8030
+      name: http
 
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: stockmanager
-spec:
-  spec:
+spec: # Remove the redundant 'spec' field here
   selector:
     matchLabels:
       app: stockmanager
@@ -31,13 +30,13 @@ spec:
         app: stockmanager
     spec:
       containers:
-      - name: stockmanager
-        image: thetips4you/stockmanager:latest
-        ports:
-        - containerPort: 8030
-        livenessProbe:
-          httpGet:
-            path: /health
-            port: 8030
-          initialDelaySeconds: 30
-          timeoutSeconds: 1
+        - name: stockmanager
+          image: priyanshugour70/pbl4-stockmanager
+          ports:
+            - containerPort: 8030
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8030
+            initialDelaySeconds: 30
+            timeoutSeconds: 1
